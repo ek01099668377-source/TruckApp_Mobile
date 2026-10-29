@@ -136,4 +136,4 @@ if __name__ == "__main__":
             page.add(ft.Text(f"خطأ غير متوقع: {ex}", color="red", size=16, selectable=True))
             page.update()
 
-    ft.run(run_app)
+    ft.app(target=main)
