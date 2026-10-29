@@ -2,26 +2,11 @@
 name = "truckapp_mobile"
 version = "1.0.0"
 description = "Truck trips management mobile app"
+requires-python = ">=3.12,<3.13"
 dependencies = [
-    "flet==1.0.5",
+    "flet==0.25.2",
     "openpyxl==3.1.5",
     "fpdf2==2.8.9",
-    "arabic-reshaper==3.0.1",
+    "arabic-reshaper==3.0.0",
     "python-bidi==0.4.2",
 ]
-
-[tool.flet]
-product = "TruckApp_Mobile"
-artifact = "app-release"
-org = "com.flet"
-
-# Project-local copy of Flet 1.0.5's build template with the pinned
-# Gradle/Kotlin/wrapper versions, so a template re-render keeps the fixes.
-[tool.flet.template]
-url = "C:/TruckApp_Mobile/.flet-build-template.zip"
-
-[tool.flet.android.gradle_properties]
-"org.gradle.jvmargs" = "-Xmx4096m"
-"kotlin.compiler.execution.strategy" = "in-process"
-"org.gradle.daemon" = "false"
-"android.suppressUnsupportedCompileSdk" = "36"
