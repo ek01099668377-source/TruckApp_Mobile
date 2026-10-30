@@ -137,9 +137,13 @@ if __name__ == "__main__":
     def run_app(page: ft.Page):
         try:
             main(page)
-        except Exception as ex:
-            # لو حصل أي خطأ غير متوقع، هيظهر على الشاشة باللون الأحمر
-            page.add(ft.Text(f"خطأ غير متوقع: {ex}", color="red", size=16, selectable=True))
+        except Exception as e:
+            # هنا هنخلي التطبيق يمسح الشاشة السوداء ويطبع الخطأ
+            page.controls.clear() 
+            page.add(
+                ft.Text("حدث خطأ أثناء التشغيل:", color="red", size=20, weight="bold"),
+                ft.Text(str(e), color="red", size=16, selectable=True)
+            )
             page.update()
 
-    ft.app(target=main)
+    ft.app(target=run_app)
