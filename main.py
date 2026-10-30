@@ -16,7 +16,13 @@ def get_db_path():
     return os.path.join(app_data_dir, "trips.db")
 
 def init_db():
-    db_path = get_db_path()
+    # مسار مضمون وموثوق في الأندرويد
+    db_path = os.path.join(os.getenv("FLET_APP_STORAGE_DATA"), "trips.db")
+    
+    # لو المسار مش موجود، هنستخدم مسار بديل
+    if not os.getenv("FLET_APP_STORAGE_DATA"):
+        db_path = "trips.db"
+        
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
     cursor.execute("""
